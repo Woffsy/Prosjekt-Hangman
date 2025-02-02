@@ -25,5 +25,52 @@ function feil2(){
     ctx.stroke()
 }
 
+function feil3(){
+    ctx.beginPath()
+    ctx.moveTo(150, 175)
+    ctx.lineTo(150, 200)
+    ctx.stroke()
+    ctx.beginPath()
+    ctx.arc(150, 210, 10, 0, 2*Math.PI)
+    ctx.stroke()
+}
+
+function feil4(){
+    ctx.beginPath()
+    ctx.moveTo(150, 220)
+    ctx.lineTo(150, 250)
+    ctx.stroke()
+}
+
+function feil5(){
+    ctx.beginPath()
+    ctx.moveTo(150, 220)
+    ctx.lineTo(135, 235)
+    ctx.stroke()
+}
+function feil6(){
+    ctx.beginPath()
+    ctx.moveTo(150, 220)
+    ctx.lineTo(165, 235)
+    ctx.stroke()
+}
+function feil7(){
+    ctx.beginPath()
+    ctx.moveTo(150, 250)
+    ctx.lineTo(135, 265)
+    ctx.stroke()
+}
+function feil8(){
+    ctx.beginPath()
+    ctx.moveTo(150, 250)
+    ctx.lineTo(165, 265)
+    ctx.stroke()
+}
 feil1()
 feil2()
+feil3()
+feil4()
+feil5()
+feil6()
+feil7()
+feil8()
