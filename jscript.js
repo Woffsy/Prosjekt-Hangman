@@ -71,7 +71,8 @@ function feil8() {
 var feil = 0;
 
 const feilbtn = document.getElementById("feilbtn");
-feilbtn.addEventListener("click", () => {
+
+function feilsys() {
   feil++;
   console.log(feil);
 
@@ -107,12 +108,19 @@ feilbtn.addEventListener("click", () => {
     feil8();
     console.log("Feil 8");
   }
-});
-// feil1()
-// feil2()
-// feil3()
-// feil4()
-// feil5()
-// feil6()
-// feil7()
-// feil8()
+}
+
+feilbtn.addEventListener("click", feilsys);
+
+//----------------------------------------------------------------------------------------------------
+
+const ordliste = ["hei", "på", "deg", "og", "velkommen"];
+const ordbtn = document.getElementById("ordbtn");
+
+function ordsys(){
+  var ord = Math.floor(Math.random() * ordliste.length);
+  const ord2 = ordliste[ord].split("");
+  console.log(ord2);
+};
+
+ordbtn.addEventListener("click", ordsys);
