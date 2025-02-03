@@ -70,11 +70,9 @@ function feil8() {
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
 var feil = 0;
 
-const feilbtn = document.getElementById("feilbtn");
 
 function feilsys() {
   feil++;
-  console.log(feil);
 
   if (feil == 1) {
     feil1();
@@ -110,17 +108,49 @@ function feilsys() {
   }
 }
 
-feilbtn.addEventListener("click", feilsys);
 
 //----------------------------------------------------------------------------------------------------
 
-const ordliste = ["hei", "på", "deg", "og", "velkommen"];
-const ordbtn = document.getElementById("ordbtn");
+const ordliste = ["h", "hi", "hei"];
 
-function ordsys(){
+let ord2 = [];
+
+function ordsys() {
   var ord = Math.floor(Math.random() * ordliste.length);
-  const ord2 = ordliste[ord].split("");
+  ord2 = ordliste[ord].split("");
   console.log(ord2);
-};
+}
+ordsys();
 
-ordbtn.addEventListener("click", ordsys);
+
+//----------------------------------------------------------------------------------------------------
+let ord3 = [];
+for (i = 0; i < ord2.length; i++) {
+  ord3.push("_");
+}
+
+const ordet = document.getElementById("ordet");
+ord3 = ord3.join(" ");
+ordet.innerHTML = ord3;
+
+//----------------------------------------------------------------------------------------------------
+const inputField = document.getElementById("letterInput");
+
+function bokstavsys() {
+  let gjett = inputField.value;
+  console.log(gjett);
+  if (ord2.includes(gjett)) {
+    console.log("riktig");
+  } else {
+    feilsys();
+  }
+  inputField.value = "";
+}
+
+let gjett = "";
+
+function saveLetter() {
+  gjett = inputField.value;
+  console.log(gjett);
+  bokstavsys();
+}
