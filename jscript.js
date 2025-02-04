@@ -74,6 +74,13 @@ const ordliste = ["hallo", "hi", "hei"];
 
 let ord2 = [];
 
+let gjett = "";
+let gjettetbokstaver = [];
+const bokstaver = document.getElementById("bokstaver");
+
+const ordet = document.getElementById("ordet");
+let ord3 = [];
+
 function ordsys() {
   var ord = Math.floor(Math.random() * ordliste.length);
   ord2 = [];
@@ -84,8 +91,7 @@ ordsys();
 
 
 //----------------------------------------------------------------------------------------------------
-const ordet = document.getElementById("ordet");
-let ord3 = [];
+
 
 function NyttOrd() {
   ord3 = [];
@@ -93,6 +99,8 @@ function NyttOrd() {
     ord3.push("_");
   }
   ordet.innerHTML = ord3.join(" ");
+  gjettetbokstaver = [];
+  bokstaver.innerHTML = gjettetbokstaver.join(" ");
 }
 
 NyttOrd();
@@ -127,18 +135,26 @@ function bokstavsys() {
       ordet.innerHTML = ord3.join(" ");
     }
 
-  } else {
-    feilsys();
-  }
+  } 
+  else if (gjettetbokstaver.includes(gjett) == false) {
+      feilsys();
+    }
   inputField.value = "";
 }
 
-let gjett = "";
+
 
 function saveLetter() {
   gjett = inputField.value;
   console.log(gjett);
   bokstavsys();
+  if (gjettetbokstaver.includes(gjett) == false) {
+    if (ord2.includes(gjett) == false) {
+      gjettetbokstaver.push(gjett);
+      gjettetbokstaver.sort();
+      bokstaver.innerHTML = gjettetbokstaver.join(" ");
+    }
+  }
 }
 //----------------------------------------------------------------------------------------------------
 
@@ -190,7 +206,9 @@ function feilsys() {
     ctx.clearRect(0, 0, width, height);
     feil = 0;
     ordet.innerHTML = ord3.join(" ");
-    alert("Du tapte!")
+    setTimeout(() => {
+      alert("Du tapte!");
+    }, 100);
 
   }
 }
