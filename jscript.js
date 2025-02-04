@@ -190,6 +190,7 @@ function feilsys() {
     ctx.clearRect(0, 0, width, height);
     feil = 0;
     ordet.innerHTML = ord3.join(" ");
+    alert("Du tapte!")
 
   }
 }
