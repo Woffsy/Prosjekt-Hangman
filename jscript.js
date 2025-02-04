@@ -111,7 +111,7 @@ function feilsys() {
 
 //----------------------------------------------------------------------------------------------------
 
-const ordliste = ["h", "hi", "hei"];
+const ordliste = ["hallo", "hi", "hei"];
 
 let ord2 = [];
 
@@ -130,8 +130,19 @@ for (i = 0; i < ord2.length; i++) {
 }
 
 const ordet = document.getElementById("ordet");
-ord3 = ord3.join(" ");
-ordet.innerHTML = ord3;
+ordet.innerHTML = ord3.join(" ");
+
+//----------------------------------------------------------------------------------------------------
+
+function swap(gjett) {
+  for (let i = 0; i < ord2.length; i++) {
+    if (ord2[i] === gjett) {
+      ord3[i] = gjett; 
+    }
+  }
+  ordet.innerHTML = ord3.join(" "); 
+}
+
 
 //----------------------------------------------------------------------------------------------------
 const inputField = document.getElementById("letterInput");
@@ -141,6 +152,8 @@ function bokstavsys() {
   console.log(gjett);
   if (ord2.includes(gjett)) {
     console.log("riktig");
+    swap(gjett);
+
   } else {
     feilsys();
   }
