@@ -67,6 +67,86 @@ function feil8() {
   ctx.stroke();
 }
 
+
+//----------------------------------------------------------------------------------------------------
+
+const ordliste = ["hallo", "hi", "hei"];
+
+let ord2 = [];
+
+function ordsys() {
+  var ord = Math.floor(Math.random() * ordliste.length);
+  ord2 = [];
+  ord2 = ordliste[ord].split("");
+  console.log(ord2);
+}
+ordsys();
+
+
+//----------------------------------------------------------------------------------------------------
+const ordet = document.getElementById("ordet");
+let ord3 = [];
+
+function NyttOrd() {
+  ord3 = [];
+  for (i = 0; i < ord2.length; i++) {
+    ord3.push("_");
+  }
+  ordet.innerHTML = ord3.join(" ");
+}
+
+NyttOrd();
+
+//----------------------------------------------------------------------------------------------------
+
+function swap(gjett) {
+  for (let i = 0; i < ord2.length; i++) {
+    if (ord2[i] === gjett) {
+      ord3[i] = gjett; 
+    }
+  }
+  ordet.innerHTML = ord3.join(" "); 
+}
+
+
+//----------------------------------------------------------------------------------------------------
+const inputField = document.getElementById("letterInput");
+
+function bokstavsys() {
+  let gjett = inputField.value;
+  console.log(gjett);
+  if (ord2.includes(gjett)) {
+    console.log("riktig");
+    swap(gjett);
+    if (ord3.join("") == ord2.join("")) {
+      alert("Du vant!");
+      ordsys();
+      NyttOrd();
+      ctx.clearRect(0, 0, width, height);
+      feil = 0;
+      ordet.innerHTML = ord3.join(" ");
+    }
+
+  } else {
+    feilsys();
+  }
+  inputField.value = "";
+}
+
+let gjett = "";
+
+function saveLetter() {
+  gjett = inputField.value;
+  console.log(gjett);
+  bokstavsys();
+}
+//----------------------------------------------------------------------------------------------------
+
+inputField.addEventListener("keyup", saveLetter)
+
+
+
+//----------------------------------------------------------------------------------------------------
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
 var feil = 0;
 
@@ -105,68 +185,11 @@ function feilsys() {
   if (feil == 8) {
     feil8();
     console.log("Feil 8");
+    ordsys();
+    NyttOrd();
+    ctx.clearRect(0, 0, width, height);
+    feil = 0;
+    ordet.innerHTML = ord3.join(" ");
+
   }
 }
-
-
-//----------------------------------------------------------------------------------------------------
-
-const ordliste = ["hallo", "hi", "hei"];
-
-let ord2 = [];
-
-function ordsys() {
-  var ord = Math.floor(Math.random() * ordliste.length);
-  ord2 = ordliste[ord].split("");
-  console.log(ord2);
-}
-ordsys();
-
-
-//----------------------------------------------------------------------------------------------------
-let ord3 = [];
-for (i = 0; i < ord2.length; i++) {
-  ord3.push("_");
-}
-
-const ordet = document.getElementById("ordet");
-ordet.innerHTML = ord3.join(" ");
-
-//----------------------------------------------------------------------------------------------------
-
-function swap(gjett) {
-  for (let i = 0; i < ord2.length; i++) {
-    if (ord2[i] === gjett) {
-      ord3[i] = gjett; 
-    }
-  }
-  ordet.innerHTML = ord3.join(" "); 
-}
-
-
-//----------------------------------------------------------------------------------------------------
-const inputField = document.getElementById("letterInput");
-
-function bokstavsys() {
-  let gjett = inputField.value;
-  console.log(gjett);
-  if (ord2.includes(gjett)) {
-    console.log("riktig");
-    swap(gjett);
-
-  } else {
-    feilsys();
-  }
-  inputField.value = "";
-}
-
-let gjett = "";
-
-function saveLetter() {
-  gjett = inputField.value;
-  console.log(gjett);
-  bokstavsys();
-}
-//----------------------------------------------------------------------------------------------------
-
-inputField.addEventListener("keyup", saveLetter)
