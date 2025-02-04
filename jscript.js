@@ -167,3 +167,6 @@ function saveLetter() {
   console.log(gjett);
   bokstavsys();
 }
+//----------------------------------------------------------------------------------------------------
+
+inputField.addEventListener("keyup", saveLetter)
