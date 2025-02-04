@@ -84,7 +84,6 @@ function ordsys() {
   var ord = Math.floor(Math.random() * ordliste.length);
   ord2 = [];
   ord2 = ordliste[ord].split("");
-  console.log(ord2);
   bokstaver.innerHTML = " ";
 }
 ordsys();
@@ -119,9 +118,7 @@ const inputField = document.getElementById("letterInput");
 
 function bokstavsys() {
   let gjett = inputField.value;
-  console.log(gjett);
   if (ord2.includes(gjett)) {
-    console.log("riktig");
     swap(gjett);
     if (ord3.join("") == ord2.join("")) {
       alert("Du vant!");
@@ -143,7 +140,6 @@ function bokstavsys() {
 
 function saveLetter() {
   gjett = inputField.value;
-  console.log(gjett);
   bokstavsys();
   if (gjettetbokstaver.includes(gjett) == false) {
     if (ord2.includes(gjett) == false) {
@@ -170,35 +166,27 @@ function feilsys() {
 
   if (feil == 1) {
     feil1();
-    console.log("Feil 1");
   }
   if (feil == 2) {
     feil2();
-    console.log("Feil 2");
   }
   if (feil == 3) {
     feil3();
-    console.log("Feil 3");
   }
   if (feil == 4) {
     feil4();
-    console.log("Feil 4");
   }
   if (feil == 5) {
     feil5();
-    console.log("Feil 5");
   }
   if (feil == 6) {
     feil6();
-    console.log("Feil 6");
   }
   if (feil == 7) {
     feil7();
-    console.log("Feil 7");
   }
   if (feil == 8) {
     feil8();
-    console.log("Feil 8");
     ordsys();
     NyttOrd();
     ctx.clearRect(0, 0, width, height);
