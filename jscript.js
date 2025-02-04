@@ -130,6 +130,9 @@ function bokstavsys() {
       ctx.clearRect(0, 0, width, height);
       feil = 0;
       ordet.innerHTML = ord3.join(" ");
+      setTimeout(() => {
+      bokstaver.innerHTML = " ";
+      }, 100);
     }
   } else if (gjettetbokstaver.includes(gjett) == false) {
     feilsys();
