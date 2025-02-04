@@ -131,7 +131,8 @@ function bokstavsys() {
       feil = 0;
       ordet.innerHTML = ord3.join(" ");
       setTimeout(() => {
-      bokstaver.innerHTML = " ";
+        gjettetbokstaver = [];
+        bokstaver.innerHTML = " ";
       }, 100);
     }
   } else if (gjettetbokstaver.includes(gjett) == false) {
@@ -204,6 +205,7 @@ function feilsys() {
     feil = 0;
     setTimeout(() => {
       alert("Du tapte!");
+      gjettetbokstaver = [];
       bokstaver.innerHTML = " ";
     }, 100);
   }
