@@ -8,69 +8,68 @@ canvas.height = height;
 
 function feil1() {
   ctx.beginPath();
-  ctx.moveTo(50, 300);
-  ctx.lineTo(75, 275);
-  ctx.lineTo(100, 300);
+  ctx.moveTo(200, 300);
+  ctx.lineTo(225, 275);
+  ctx.lineTo(250, 300);
   ctx.stroke();
 }
 
 function feil2() {
   ctx.beginPath();
-  ctx.moveTo(75, 275);
-  ctx.lineTo(75, 175);
-  ctx.lineTo(150, 175);
+  ctx.moveTo(225, 275);
+  ctx.lineTo(225, 175);
+  ctx.lineTo(300, 175);
   ctx.stroke();
-  ctx.moveTo(75, 200);
-  ctx.lineTo(100, 175);
+  ctx.moveTo(225, 200);
+  ctx.lineTo(250, 175);
   ctx.stroke();
 }
 
 function feil3() {
   ctx.beginPath();
-  ctx.moveTo(150, 175);
-  ctx.lineTo(150, 200);
+  ctx.moveTo(300, 175);
+  ctx.lineTo(300, 200);
   ctx.stroke();
   ctx.beginPath();
-  ctx.arc(150, 210, 10, 0, 2 * Math.PI);
+  ctx.arc(300, 210, 10, 0, 2 * Math.PI);
   ctx.stroke();
 }
 
 function feil4() {
   ctx.beginPath();
-  ctx.moveTo(150, 220);
-  ctx.lineTo(150, 250);
+  ctx.moveTo(300, 220);
+  ctx.lineTo(300, 250);
   ctx.stroke();
 }
 
 function feil5() {
   ctx.beginPath();
-  ctx.moveTo(150, 220);
-  ctx.lineTo(135, 235);
+  ctx.moveTo(300, 220);
+  ctx.lineTo(285, 235);
   ctx.stroke();
 }
 function feil6() {
   ctx.beginPath();
-  ctx.moveTo(150, 220);
-  ctx.lineTo(165, 235);
+  ctx.moveTo(300, 220);
+  ctx.lineTo(315, 235);
   ctx.stroke();
 }
 function feil7() {
   ctx.beginPath();
-  ctx.moveTo(150, 250);
-  ctx.lineTo(135, 265);
+  ctx.moveTo(300, 250);
+  ctx.lineTo(285, 265);
   ctx.stroke();
 }
 function feil8() {
   ctx.beginPath();
-  ctx.moveTo(150, 250);
-  ctx.lineTo(165, 265);
+  ctx.moveTo(300, 250);
+  ctx.lineTo(315, 265);
   ctx.stroke();
 }
 
-
 //----------------------------------------------------------------------------------------------------
 
-const ordliste = ["hallo", "hi", "hei"];
+const ordliste = ["hei", "hallo", "hade", "hund", "katt", "fisk", "hest", "ku", "gris", "menneske", "velkommen", "godmorgen", "godnatt", "godkveld", "hangman"];
 
 let ord2 = [];
 
@@ -86,12 +85,11 @@ function ordsys() {
   ord2 = [];
   ord2 = ordliste[ord].split("");
   console.log(ord2);
+  bokstaver.innerHTML = " ";
 }
 ordsys();
 
-
 //----------------------------------------------------------------------------------------------------
-
 
 function NyttOrd() {
   ord3 = [];
@@ -110,12 +108,11 @@ NyttOrd();
 function swap(gjett) {
   for (let i = 0; i < ord2.length; i++) {
     if (ord2[i] === gjett) {
-      ord3[i] = gjett; 
+      ord3[i] = gjett;
     }
   }
-  ordet.innerHTML = ord3.join(" "); 
+  ordet.innerHTML = ord3.join(" ");
 }
-
 
 //----------------------------------------------------------------------------------------------------
 const inputField = document.getElementById("letterInput");
@@ -134,15 +131,11 @@ function bokstavsys() {
       feil = 0;
       ordet.innerHTML = ord3.join(" ");
     }
-
-  } 
-  else if (gjettetbokstaver.includes(gjett) == false) {
-      feilsys();
-    }
+  } else if (gjettetbokstaver.includes(gjett) == false) {
+    feilsys();
+  }
   inputField.value = "";
 }
-
-
 
 function saveLetter() {
   gjett = inputField.value;
@@ -158,14 +151,15 @@ function saveLetter() {
 }
 //----------------------------------------------------------------------------------------------------
 
-inputField.addEventListener("keyup", saveLetter)
-
-
+inputField.addEventListener("keydown", function (event) {
+  if (event.key === "Enter") {
+    saveLetter();
+  }
+});
 
 //----------------------------------------------------------------------------------------------------
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
 var feil = 0;
-
 
 function feilsys() {
   feil++;
@@ -205,10 +199,9 @@ function feilsys() {
     NyttOrd();
     ctx.clearRect(0, 0, width, height);
     feil = 0;
-    ordet.innerHTML = ord3.join(" ");
     setTimeout(() => {
       alert("Du tapte!");
+      bokstaver.innerHTML = " ";
     }, 100);
-
   }
 }
