@@ -66,10 +66,72 @@ function feil8() {
   ctx.lineTo(315, 265);
   ctx.stroke();
 }
+function losepopup() {
+  const popup = document.createElement("div");
+  popup.style.position = "fixed";
+  popup.style.left = "50%";
+  popup.style.top = "50%";
+  popup.style.transform = "translate(-50%, -50%)";
+  popup.style.display = "flex";
+  popup.style.flexDirection = "column";
+  popup.style.alignItems = "center";
+  popup.style.justifyContent = "center";
+  popup.style.width = "500px";
+  popup.style.height = "500px";
+  popup.style.padding = "20px";
+  popup.style.backgroundColor = "white";
+  popup.style.border = "2px solid black";
+  popup.style.zIndex = "1000";
+  popup.innerHTML = "<p>Du tapte!</p><button id='closePopup'>Lukk</button>";
+  document.body.appendChild(popup);
 
+  document.getElementById("closePopup").addEventListener("click", function () {
+    document.body.removeChild(popup);
+  });
+}
+
+function winpopup() {
+  const popup = document.createElement("div");
+  popup.style.position = "fixed";
+  popup.style.left = "50%";
+  popup.style.top = "50%";
+  popup.style.transform = "translate(-50%, -50%)";
+  popup.style.display = "flex";
+  popup.style.flexDirection = "column";
+  popup.style.alignItems = "center";
+  popup.style.justifyContent = "center";
+  popup.style.width = "500px";
+  popup.style.height = "500px";
+  popup.style.padding = "20px";
+  popup.style.backgroundColor = "white";
+  popup.style.border = "2px solid black";
+  popup.style.zIndex = "1000";
+  popup.innerHTML = "<p>Du vant!</p><button id='closePopup'>Lukk</button>";
+  document.body.appendChild(popup);
+
+  document.getElementById("closePopup").addEventListener("click", function () {
+    document.body.removeChild(popup);
+  });
+}
 //----------------------------------------------------------------------------------------------------
 
-const ordliste = ["hei", "hallo", "hade", "hund", "katt", "fisk", "hest", "ku", "gris", "menneske", "velkommen", "godmorgen", "godnatt", "godkveld", "hangman"];
+const ordliste = [
+  "hei",
+  "hallo",
+  "hade",
+  "hund",
+  "katt",
+  "fisk",
+  "hest",
+  "ku",
+  "gris",
+  "menneske",
+  "velkommen",
+  "godmorgen",
+  "godnatt",
+  "godkveld",
+  "hangman",
+];
 
 let ord2 = [];
 
@@ -121,7 +183,7 @@ function bokstavsys() {
   if (ord2.includes(gjett)) {
     swap(gjett);
     if (ord3.join("") == ord2.join("")) {
-      alert("Du vant!");
+      winpopup();
       ordsys();
       NyttOrd();
       ctx.clearRect(0, 0, width, height);
@@ -191,8 +253,8 @@ function feilsys() {
     NyttOrd();
     ctx.clearRect(0, 0, width, height);
     feil = 0;
+    losepopup();
     setTimeout(() => {
-      alert("Du tapte!");
       gjettetbokstaver = [];
       bokstaver.innerHTML = " ";
     }, 100);
