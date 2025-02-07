@@ -1,0 +1,11 @@
+hangman
+ordliste
+fra
+word
+txt
+dette
+er
+en
+test
+for
+meg

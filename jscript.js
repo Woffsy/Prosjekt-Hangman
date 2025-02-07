@@ -114,45 +114,39 @@ function winpopup() {
   });
 }
 //----------------------------------------------------------------------------------------------------
-
-const ordliste = [
-  "hei",
-  "hallo",
-  "hade",
-  "hund",
-  "katt",
-  "fisk",
-  "hest",
-  "ku",
-  "gris",
-  "menneske",
-  "velkommen",
-  "godmorgen",
-  "godnatt",
-  "godkveld",
-  "hangman",
-];
-
+const inputField = document.getElementById("letterInput");
+const bokstaver = document.getElementById("bokstaver");
+const ordet = document.getElementById("ordet");
 let ord2 = [];
-
 let gjett = "";
 let gjettetbokstaver = [];
-const bokstaver = document.getElementById("bokstaver");
-
-const ordet = document.getElementById("ordet");
 let ord3 = [];
+let ordliste;
+var feil = 0;
 
-function ordsys() {
+//----------------------------------------------------------------------------------------------------
+//Henter ord fra filen words.txt og splitter ordene til en liste
+
+async function fetchWords() {
+  const res = await fetch("words.txt");
+  const data = await res.text();
+  ordliste = data.split(/\r?\n/);
+  // Now you can use ordliste here or call another function that uses it
+  console.log(ordliste);
+  nyttSpill();
+}
+
+fetchWords();
+
+
+function ordSys() {
   var ord = Math.floor(Math.random() * ordliste.length);
   ord2 = [];
   ord2 = ordliste[ord].split("");
   bokstaver.innerHTML = " ";
 }
-ordsys();
 
-//----------------------------------------------------------------------------------------------------
-
-function NyttOrd() {
+function nyttOrd() {
   ord3 = [];
   for (i = 0; i < ord2.length; i++) {
     ord3.push("_");
@@ -162,7 +156,12 @@ function NyttOrd() {
   bokstaver.innerHTML = gjettetbokstaver.join(" ");
 }
 
-NyttOrd();
+function nyttSpill() {
+  ordSys();
+  nyttOrd();
+  ctx.clearRect(0, 0, width, height);
+  feil = 0;
+}
 
 //----------------------------------------------------------------------------------------------------
 
@@ -176,7 +175,7 @@ function swap(gjett) {
 }
 
 //----------------------------------------------------------------------------------------------------
-const inputField = document.getElementById("letterInput");
+
 
 function bokstavsys() {
   let gjett = inputField.value;
@@ -184,10 +183,9 @@ function bokstavsys() {
     swap(gjett);
     if (ord3.join("") == ord2.join("")) {
       winpopup();
-      ordsys();
-      NyttOrd();
-      ctx.clearRect(0, 0, width, height);
-      feil = 0;
+
+      nyttSpill();
+
       ordet.innerHTML = ord3.join(" ");
       setTimeout(() => {
         gjettetbokstaver = [];
@@ -219,9 +217,10 @@ inputField.addEventListener("keydown", function (event) {
   }
 });
 
+
+
 //----------------------------------------------------------------------------------------------------
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
-var feil = 0;
 
 function feilsys() {
   feil++;
@@ -249,10 +248,7 @@ function feilsys() {
   }
   if (feil == 8) {
     feil8();
-    ordsys();
-    NyttOrd();
-    ctx.clearRect(0, 0, width, height);
-    feil = 0;
+    nyttSpill();
     losepopup();
     setTimeout(() => {
       gjettetbokstaver = [];
