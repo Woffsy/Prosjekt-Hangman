@@ -20,52 +20,58 @@ function feil2() {
   ctx.lineTo(225, 175);
   ctx.lineTo(300, 175);
   ctx.stroke();
+}
+function feil3() {
+  ctx.beginPath();
   ctx.moveTo(225, 200);
   ctx.lineTo(250, 175);
   ctx.stroke();
 }
 
-function feil3() {
+function feil4() {
   ctx.beginPath();
   ctx.moveTo(300, 175);
   ctx.lineTo(300, 200);
   ctx.stroke();
+}
+function feil5() {
   ctx.beginPath();
   ctx.arc(300, 210, 10, 0, 2 * Math.PI);
   ctx.stroke();
 }
 
-function feil4() {
+function feil6() {
   ctx.beginPath();
   ctx.moveTo(300, 220);
   ctx.lineTo(300, 250);
   ctx.stroke();
 }
 
-function feil5() {
+function feil7() {
   ctx.beginPath();
   ctx.moveTo(300, 220);
   ctx.lineTo(285, 235);
   ctx.stroke();
 }
-function feil6() {
+function feil8() {
   ctx.beginPath();
   ctx.moveTo(300, 220);
   ctx.lineTo(315, 235);
   ctx.stroke();
 }
-function feil7() {
+function feil9() {
   ctx.beginPath();
   ctx.moveTo(300, 250);
   ctx.lineTo(285, 265);
   ctx.stroke();
 }
-function feil8() {
+function feil10() {
   ctx.beginPath();
   ctx.moveTo(300, 250);
   ctx.lineTo(315, 265);
   ctx.stroke();
 }
+
 function losepopup() {
   const popup = document.createElement("div");
   popup.style.position = "fixed";
@@ -82,7 +88,8 @@ function losepopup() {
   popup.style.backgroundColor = "white";
   popup.style.border = "2px solid black";
   popup.style.zIndex = "1000";
-  popup.innerHTML = "<p>Du tapte!</p><button id='closePopup'>Lukk</button>";
+  popup.innerHTML = `<p>Du tapte!</p><p>Ordet var </p><button id='closePopup'>Lukk</button>`;
+  popup.innerHTML = `<p>Du tapte!</p><p>Ordet var: ${ord2.join("")}</p><button id='closePopup'>Lukk</button>`;
   document.body.appendChild(popup);
 
   document.getElementById("closePopup").addEventListener("click", function () {
@@ -280,6 +287,12 @@ function feilsys() {
   }
   if (feil == 8) {
     feil8();
+  }
+  if (feil == 9){
+    feil9();
+  }
+  if (feil == 10) {
+    feil10();
     nyttSpill();
     losepopup();
     setTimeout(() => {
