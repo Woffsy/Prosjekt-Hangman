@@ -210,13 +210,45 @@ function saveLetter() {
   }
 }
 //----------------------------------------------------------------------------------------------------
+const knapp = document.getElementById("modeswitch");
+// inputField.addEventListener("keydown", function (event) {
+//   if (event.key === "Enter") {
+//     saveLetter();
+//   }
+// });
+  // TODO: If checkbox is checked, and input is a letter, call saveLetter()
 
-inputField.addEventListener("keydown", function (event) {
+  
+  
+
+
+function slowType(event) {
   if (event.key === "Enter") {
     saveLetter();
   }
-});
+}
 
+function quickType() {
+    saveLetter();
+}
+
+// Toggle event listeners
+let fastLetter = false;
+
+function toggleFocusListener() {
+    if (fastLetter === true) {
+        inputField.removeEventListener("keyup", quickType);
+        inputField.addEventListener("keydown", slowType);
+        console.log("slowType");
+    } else {
+        inputField.removeEventListener("keydown", slowType);
+        inputField.addEventListener("keyup", quickType);
+        console.log("quickType");
+    }
+    fastLetter = !fastLetter;
+}
+
+knapp.addEventListener("click", toggleFocusListener); 
 
 
 //----------------------------------------------------------------------------------------------------
