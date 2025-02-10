@@ -240,7 +240,7 @@ function quickType() {
 }
 
 // Toggle event listeners
-let fastLetter = false;
+let fastLetter = true;
 
 function toggleFocusListener() {
     if (fastLetter === true) {
@@ -255,8 +255,11 @@ function toggleFocusListener() {
     fastLetter = !fastLetter;
 }
 
+toggleFocusListener();
 knapp.addEventListener("click", toggleFocusListener); 
-
+window.onload = function() {
+  knapp.checked = false;
+  };
 
 //----------------------------------------------------------------------------------------------------
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
