@@ -293,8 +293,8 @@ function feilsys() {
   }
   if (feil == 10) {
     feil10();
-    nyttSpill();
     losepopup();
+    nyttSpill();
     setTimeout(() => {
       gjettetbokstaver = [];
       bokstaver.innerHTML = " ";
