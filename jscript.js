@@ -74,20 +74,7 @@ function feil10() {
 
 function losepopup() {
   const popup = document.createElement("div");
-  popup.style.position = "fixed";
-  popup.style.left = "50%";
-  popup.style.top = "50%";
-  popup.style.transform = "translate(-50%, -50%)";
-  popup.style.display = "flex";
-  popup.style.flexDirection = "column";
-  popup.style.alignItems = "center";
-  popup.style.justifyContent = "center";
-  popup.style.width = "500px";
-  popup.style.height = "500px";
-  popup.style.padding = "20px";
-  popup.style.backgroundColor = "white";
-  popup.style.border = "2px solid black";
-  popup.style.zIndex = "1000";
+  popup.id = "popup";
   popup.innerHTML = `<p>Du tapte!</p><p>Ordet var </p><button id='closePopup'>Lukk</button>`;
   popup.innerHTML = `<p>Du tapte!</p><p>Ordet var: ${ord2.join("")}</p><button id='closePopup'>Lukk</button>`;
   document.body.appendChild(popup);
@@ -99,20 +86,7 @@ function losepopup() {
 
 function winpopup() {
   const popup = document.createElement("div");
-  popup.style.position = "fixed";
-  popup.style.left = "50%";
-  popup.style.top = "50%";
-  popup.style.transform = "translate(-50%, -50%)";
-  popup.style.display = "flex";
-  popup.style.flexDirection = "column";
-  popup.style.alignItems = "center";
-  popup.style.justifyContent = "center";
-  popup.style.width = "500px";
-  popup.style.height = "500px";
-  popup.style.padding = "20px";
-  popup.style.backgroundColor = "white";
-  popup.style.border = "2px solid black";
-  popup.style.zIndex = "1000";
+  popup.id = "popup";
   popup.innerHTML = "<p>Du vant!</p><button id='closePopup'>Lukk</button>";
   document.body.appendChild(popup);
 
