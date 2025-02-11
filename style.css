@@ -53,7 +53,12 @@ canvas {
   background-color: #dddddd99;
   border: 2px solid black;
   z-index: 1000;
-  box-shadow: #000000 0px 0px 10px;
+  box-shadow: #555555 5px 5px 10px;
+  font-size: 50px;
+}
+#closePopup {
+  height: 50px;
+  width: 100px;
 }
 
 #switchBTN {
