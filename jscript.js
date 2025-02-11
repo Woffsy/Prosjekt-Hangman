@@ -81,6 +81,11 @@ function losepopup() {
 
   document.getElementById("closePopup").addEventListener("click", function () {
     document.body.removeChild(popup);
+    nyttSpill();
+    setTimeout(() => {
+      gjettetbokstaver = [];
+      bokstaver.innerHTML = " ";
+    }, 10);
   });
 }
 
@@ -92,6 +97,11 @@ function winpopup() {
 
   document.getElementById("closePopup").addEventListener("click", function () {
     document.body.removeChild(popup);
+    nyttSpill();
+    setTimeout(() => {
+      gjettetbokstaver = [];
+      bokstaver.innerHTML = " ";
+    }, 10);
   });
 }
 //----------------------------------------------------------------------------------------------------
@@ -164,8 +174,6 @@ function bokstavsys() {
     swap(gjett);
     if (ord3.join("") == ord2.join("")) {
       winpopup();
-
-      nyttSpill();
 
       ordet.innerHTML = ord3.join(" ");
       setTimeout(() => {
@@ -271,10 +279,5 @@ function feilsys() {
   if (feil == 10) {
     feil10();
     losepopup();
-    nyttSpill();
-    setTimeout(() => {
-      gjettetbokstaver = [];
-      bokstaver.innerHTML = " ";
-    }, 100);
   }
 }
