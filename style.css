@@ -17,6 +17,10 @@ canvas {
 #bokstaver {
   font-size: 25px;
 }
+#ikkegjettet {
+  margin-top: 100px;
+  font-size: 15px;
+}
 
 #inputDiv {
   display: flex;
@@ -50,7 +54,7 @@ canvas {
   height: 500px;
   padding: 20px;
   border-radius: 50px;
-  background-color: #dddddd99;
+  background-color: #dddddddd;
   border: 2px solid black;
   z-index: 1000;
   box-shadow: #555555 5px 5px 10px;

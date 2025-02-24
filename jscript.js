@@ -87,6 +87,8 @@ function losepopup() {
     setTimeout(() => {
       gjettetbokstaver = [];
       bokstaver.innerHTML = " ";
+      ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "æ", "ø", "å"];
+      ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
     }, 10);
   });
 }
@@ -110,9 +112,11 @@ function winpopup() {
 const inputField = document.getElementById("letterInput");
 const bokstaver = document.getElementById("bokstaver");
 const ordet = document.getElementById("ordet");
+const ikkegjettet = document.getElementById("ikkegjettet");
 let ord2 = [];
 let gjett = "";
 let gjettetbokstaver = [];
+let ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "æ", "ø", "å"];
 let ord3 = [];
 let ordliste;
 var feil = 0;
@@ -136,6 +140,7 @@ function ordSys() {
   ord2 = [];
   ord2 = ordliste[ord].split("");
   bokstaver.innerHTML = " ";
+  ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
 }
 
 function nyttOrd() {
@@ -179,6 +184,8 @@ function bokstavsys() {
       setTimeout(() => {
         gjettetbokstaver = [];
         bokstaver.innerHTML = " ";
+        ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "æ", "ø", "å"];
+        ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
       }, 100);
     }
   } else if (gjettetbokstaver.includes(gjett) == false) {
@@ -191,6 +198,8 @@ function saveLetter() {
   gjett = inputField.value;
   bokstavsys();
   if (gjettetbokstaver.includes(gjett) == false) {
+    ikkegjettetbokstaver.splice(ikkegjettetbokstaver.indexOf(gjett), 1);
+    ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
     if (ord2.includes(gjett) == false) {
       gjettetbokstaver.push(gjett);
       gjettetbokstaver.sort();
