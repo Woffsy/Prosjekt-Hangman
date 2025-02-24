@@ -76,7 +76,9 @@ function losepopup() {
   const popup = document.createElement("div");
   popup.id = "popup";
   popup.innerHTML = `<p>Du tapte!</p><p>Ordet var </p><button id='closePopup'>Lukk</button>`;
-  popup.innerHTML = `<p>Du tapte!</p><p>Ordet var: ${ord2.join("")}</p><button id='closePopup'>Lukk</button>`;
+  popup.innerHTML = `<p>Du tapte!</p><p>Ordet var: ${ord2.join(
+    ""
+  )}</p><button id='closePopup'>Lukk</button>`;
   document.body.appendChild(popup);
 
   document.getElementById("closePopup").addEventListener("click", function () {
@@ -129,7 +131,6 @@ async function fetchWords() {
 
 fetchWords();
 
-
 function ordSys() {
   var ord = Math.floor(Math.random() * ordliste.length);
   ord2 = [];
@@ -166,7 +167,6 @@ function swap(gjett) {
 }
 
 //----------------------------------------------------------------------------------------------------
-
 
 function bokstavsys() {
   let gjett = inputField.value;
@@ -205,11 +205,7 @@ const knapp = document.getElementById("modeswitch");
 //     saveLetter();
 //   }
 // });
-  // TODO: If checkbox is checked, and input is a letter, call saveLetter()
-
-  
-  
-
+// TODO: If checkbox is checked, and input is a letter, call saveLetter()
 
 function slowType(event) {
   if (event.key === "Enter") {
@@ -218,30 +214,34 @@ function slowType(event) {
 }
 
 function quickType() {
-    saveLetter();
+  saveLetter();
 }
 
 // Toggle event listeners
 let fastLetter = true;
+if (localStorage.getItem("fastLetter2")) {
+  fastLetter = localStorage.getItem("fastLetter2");
+} else {
+  localStorage.setItem("fastLetter", fastLetter);
+}
+knapp.checked = fastLetter;
 
 function toggleFocusListener() {
-    if (fastLetter === true) {
-        inputField.removeEventListener("keyup", quickType);
-        inputField.addEventListener("keydown", slowType);
-        console.log("slowType");
-    } else {
-        inputField.removeEventListener("keydown", slowType);
-        inputField.addEventListener("keyup", quickType);
-        console.log("quickType");
-    }
-    fastLetter = !fastLetter;
+  if (fastLetter === false) {
+    inputField.removeEventListener("keyup", quickType);
+    inputField.addEventListener("keydown", slowType);
+    console.log("slowType");
+  } else {
+    inputField.removeEventListener("keydown", slowType);
+    inputField.addEventListener("keyup", quickType);
+    console.log("quickType");
+  }
+  fastLetter = !fastLetter;
+  localStorage.setItem("fastLetter", fastLetter);
 }
 
 toggleFocusListener();
-knapp.addEventListener("click", toggleFocusListener); 
-window.onload = function() {
-  knapp.checked = false;
-  };
+knapp.addEventListener("click", toggleFocusListener);
 
 //----------------------------------------------------------------------------------------------------
 //Feil er lagret og tegner deler av figuren etter at du får så mange feil
@@ -273,7 +273,7 @@ function feilsys() {
   if (feil == 8) {
     feil8();
   }
-  if (feil == 9){
+  if (feil == 9) {
     feil9();
   }
   if (feil == 10) {
