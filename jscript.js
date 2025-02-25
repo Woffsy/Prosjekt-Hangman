@@ -198,8 +198,10 @@ function saveLetter() {
   gjett = inputField.value;
   bokstavsys();
   if (gjettetbokstaver.includes(gjett) == false) {
+    if (ikkegjettetbokstaver.includes(gjett) === true){
     ikkegjettetbokstaver.splice(ikkegjettetbokstaver.indexOf(gjett), 1);
     ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
+  }
     if (ord2.includes(gjett) == false) {
       gjettetbokstaver.push(gjett);
       gjettetbokstaver.sort();
