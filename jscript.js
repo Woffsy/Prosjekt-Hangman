@@ -184,7 +184,7 @@ function bokstavsys() {
       setTimeout(() => {
         gjettetbokstaver = [];
         bokstaver.innerHTML = " ";
-        ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "æ", "ø", "å"];
+        ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t","u", "v", "w", "x", "y", "z", "æ", "ø", "å"];
         ikkegjettet.innerHTML = ikkegjettetbokstaver.join(" ");
       }, 100);
     }
