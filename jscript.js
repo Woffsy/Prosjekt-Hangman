@@ -116,7 +116,7 @@ const ikkegjettet = document.getElementById("ikkegjettet");
 let ord2 = [];
 let gjett = "";
 let gjettetbokstaver = [];
-let ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z", "æ", "ø", "å"];
+let ikkegjettetbokstaver = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t","u", "v", "w", "x", "y", "z", "æ", "ø", "å"];
 let ord3 = [];
 let ordliste;
 var feil = 0;
